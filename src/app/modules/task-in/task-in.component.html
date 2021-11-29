@@ -1,0 +1,3 @@
+<app-nav-bar></app-nav-bar>
+<app-task-list [loading]="loading" [taskList]="taskList" [errorMSG]="errorMSG"></app-task-list>
+<app-add-button *ngIf="!loading"></app-add-button>

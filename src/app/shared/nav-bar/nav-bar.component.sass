@@ -1,0 +1,22 @@
+@import "../../../styles"
+.navbar
+    background-color: $cprincipal
+.close-sesion
+    background: none
+    border: none
+    color: $claro
+    &:hover
+        color: $gris
+    @include responsivephone
+        span
+            display: none
+
+.desktop
+    display: block
+    @include responsivetablet
+        display: none
+
+.phone
+    display: none
+    @include responsivetablet
+        display: block

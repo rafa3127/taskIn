@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/taskIn">
+        <app-logo class="desktop" [logoVWWidth]="8" [light]="true"></app-logo>
+        <app-logo class="phone" [logoVWWidth]="20" [light]="true"></app-logo>
+      </a>
+      <button class="close-sesion" (click)="signOut()">
+          <fa-icon [icon]="['fas','sign-out-alt']"></fa-icon>
+          <span>
+              Cerrar Sesión
+          </span>
+      </button>
+    </div>
+  </nav>

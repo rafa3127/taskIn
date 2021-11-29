@@ -1,0 +1,70 @@
+<div class="modal fade" id="modCreate" tabindex="-1" aria-labelledby="#modCreateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" [id]="'modCreateLabel'">Crear Tarea</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="restartModal()"></button>
+            </div>
+            <!-- Info modal no cargando y no exitoso -->
+            <div *ngIf="!loading && !succesModal">
+                <div class="modal-body">
+                    <form class="container" method="post" id="" [formGroup]="form">
+                        <div  *ngIf="alertform" class="alert alert-danger" role="alert">
+                            {{errorMSG}}
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label class="form-label" for="task">*Tarea:</label>
+                                <input type="text" name="task" id="task" class="form-control" formControlName="task">
+                            </div>
+                            <div *ngIf="form.controls['task'].invalid && (form.controls['task'].dirty || form.controls['task'].touched)" class="alert alert-danger" role="alert">
+                                <div *ngIf="form.controls['task'].errors?.['required']">
+                                    Debe ingresar la tarea.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label class="form-label" for="description">Descripción:</label>
+                                <input type="text" name="description" id="description" class="form-control" formControlName="description">
+                            </div>
+                            <div *ngIf="form.controls['description'].invalid && (form.controls['description'].dirty || form.controls['description'].touched)" class="alert alert-danger" role="alert">
+                                <div *ngIf="form.controls['description'].errors?.['required']">
+                                    Debe ingresar un nombre.
+                                </div>
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="restartModal()">Cancelar</button>
+                    <button (click)="createFunction()" type="button" class="btn btn-primary">Crear</button>
+                </div>
+            </div>
+
+
+            <!-- Info modal cargando -->
+            <div *ngIf="loading">
+                <div class="modal-body">
+                    <app-section-loading-spinner [modal]="true"></app-section-loading-spinner>
+                    <div class="modal-footer">
+                        <button disabled="true" class="btn btn-secondary">Cancelar</button>
+                        <button disabled="true" class="btn btn-primary">Crear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info succes -->
+            <div *ngIf="succesModal && !loading">
+                <div class="modal-body">
+                    <p>La tarea ha sido agregada correctamente</p>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="restartModal()">Aceptar</button>
+                </div>
+            </div>
+
+      </div>
+    </div>
+</div>
+  

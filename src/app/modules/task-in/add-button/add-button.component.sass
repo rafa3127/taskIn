@@ -1,0 +1,23 @@
+@import '../../../../styles'
+.floating-btn
+    position: fixed
+    right: 4rem
+    bottom: 4rem
+    width: 5rem
+    height: 5rem
+    color: $claro
+    font-weight: 700
+    font-size: 2rem
+    border: none
+    border-radius: 2.5rem
+    background: $cprincipal
+    box-shadow: .5rem 1rem 1.5rem rgba(0,0,0,0.4)
+    @include responsivephone
+        width: 6rem
+        height: 6rem
+        border-radius: 3rem
+        right: 2rem
+        bottom: 2rem
+    &:hover
+        background: darken($cprincipal, 20%)
+

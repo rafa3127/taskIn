@@ -1,0 +1,28 @@
+<div class="modal fade" id="modDelete" tabindex="-1" aria-labelledby="#modDeleteLabel'" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modDelete">Eliminar Tarea</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div  class="modal-body">
+        <div *ngIf="!loading && !(succesModal || errorMSG)">
+          ¿Está seguro que desea eliminar esta tarea?
+        </div>
+        <div *ngIf="!loading && succesModal">
+          La tarea se ha eliminado correctamente
+        </div>
+        <app-section-loading-spinner *ngIf="loading" [modal]="true"></app-section-loading-spinner>
+        <div *ngIf="errorMSG" class="alert alert-danger">
+          {{errorMSG}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="loading" *ngIf="!succesModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-danger" *ngIf="!succesModal" (click)="deleteFunction()">Eliminar</button>
+        <button *ngIf="errorMSG || succesModal" type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#succesMod" data-bs-toggle-modal (click)="resetModal()" >Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

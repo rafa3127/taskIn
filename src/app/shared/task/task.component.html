@@ -1,0 +1,23 @@
+<div class="accordion-item card">
+    <div class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#a'+task.id" aria-expanded="false" [attr.aria-controls]="'#a'+task.id">
+        <h4 class="card-body" id="heading">
+            <fa-icon *ngIf="!loadingStatus" class="icon" [icon]="icon" (click)="toggleStatus(task)"></fa-icon>
+            <div *ngIf="loadingStatus" class="spinner-border text-secondary" role="status"></div>
+              {{task.task.task}}
+        </h4>
+    </div>
+    <div [id]="'a'+task.id" class="accordion-collapse collapse" aria-labelledby="heading" data-bs-parent="#accordion">
+        <div class="accordion-body">
+            <p>{{task.task.description}}</p>
+            <div class="btns">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modUpdate" (click)="update()">
+                    <fa-icon [icon]="['fas','edit']"></fa-icon> 
+                </button>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modDelete" (click)="delete()">
+                    <fa-icon [icon]="['fas','trash-alt']"></fa-icon> 
+                </button>
+            </div>
+        </div>  
+    </div>
+</div>
+

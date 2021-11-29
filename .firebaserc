@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "taskin-c1a82": {
+      "hosting": {
+        "taskIn": [
+          "taskin-c1a82"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "taskin-c1a82"
+  }
+}

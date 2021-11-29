@@ -1,0 +1,14 @@
+<div class="container accordion" id="accordion">
+    <div *ngIf = "taskList.length > 0 && !loading">
+        <app-task *ngFor="let task of taskList" [task]="task" (emitterTask)="actionTask($event)"></app-task>
+    </div>
+</div>
+<div class="empty" *ngIf="taskList.length == 0 && !loading">
+    <app-logo [square]="true" [logoVWWidth]="30"></app-logo>
+    <p *ngIf="errorMSG">{{errorMSG}}</p>
+    <p *ngIf="!errorMSG">No hay tareas. En esta sección aparecerá la lista de tareas cuando hayas añadido alguna</p>
+</div>
+<app-section-loading-spinner *ngIf = "loading"></app-section-loading-spinner>
+
+<app-edit-modal [task]="taskToAction"></app-edit-modal>
+<app-delete-modal [taskID]="taskToAction.id"></app-delete-modal>
